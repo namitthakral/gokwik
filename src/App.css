@@ -1,38 +1,66 @@
-.App {
+input[type=text] {
+  border-radius: 25px;
+  width: 250px;
+  height: 25px;
+  padding: 12px 20px;
+  border: 1px solid #c8ccca;
+  background-color: #ebeeec;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.thankyou{
+  width: 500px;
+  box-sizing: border-box;
+  line-height: 1.6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.number{
+  line-height: 1.6;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.header{
+  background-image: linear-gradient(to right, rgb(19, 22, 68) , rgb(7, 7, 1));
+  background-size: 100% 70%;
+  background-repeat: no-repeat;
+}
+
+#coupon{
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#voucher{
+  border-radius: 25px;
+  height: 50px;
+  width: 300px;
+  font-weight: bold;
+  border:none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+button:disabled{
+  background-color: #c8ccca;
+  cursor: not-allowed;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:enabled{
+  background-color: rgb(12, 158, 216);
+  box-shadow: 0 4px 8px 0 rgb(12, 158, 216);
+  cursor: pointer;
+}
+
+.greetings{
+  font-size: 35px;
+  background: linear-gradient(to right, rgb(128, 3, 177), rgb(233, 250, 3));
+  background-clip: text;
+  color: transparent;
+}
+
+#whatsapp, #card, #cancel{
+  float: left;
+  padding-top:20px;
+}
+
+#disclaimer{
+  font-size: x-small;
 }
