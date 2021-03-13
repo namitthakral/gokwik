@@ -6,6 +6,15 @@ input[type=text] {
   border: 1px solid #c8ccca;
   background-color: #ebeeec;
   text-align: center;
+  letter-spacing: 2px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#phone::placeholder{
+  letter-spacing: 0px;
+  font-size: 13px;
+  font-weight: normal;
 }
 
 .thankyou{

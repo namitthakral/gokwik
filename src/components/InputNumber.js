@@ -6,18 +6,9 @@ const InputNumber = () => {
     const [number,setNumber] = React.useState('');
 
     const handleChange = (e) => {
-        if(e.target.value === ''){
-            document.getElementById("phone").style.letterSpacing='0px';  
-            document.getElementById("phone").style.fontSize='13.33px';
-            document.getElementById("phone").style.fontWeight='normal'; 
-        }
-        else{
-            document.getElementById("phone").style.letterSpacing='2px';
-            document.getElementById("phone").style.fontSize='17px';
-            document.getElementById("phone").style.fontWeight='bold';
-        }
         const exp = new RegExp("^(?=[6-9]{1}[0-9]{9})");
         setNumber(e.target.value);
+
         if(exp.test(e.target.value)){
             document.getElementById("voucher").disabled=false;
         }
