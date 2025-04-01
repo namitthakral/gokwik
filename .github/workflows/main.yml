@@ -1,0 +1,41 @@
+name: Auto Approve Version Bumps
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check if only the version file changed
+        id: check_version_file
+        run: |
+          # Fetch changed files from the PR
+          CHANGED_FILES=$(gh pr view ${{ github.event.pull_request.number }} --json files --jq '.files[].path')
+          echo "Changed files: $CHANGED_FILES"
+
+          # Set the expected version file
+          VERSION_FILE=(".codesandbox/tasks.json", "package-lock.json", "src/components/Header.js")
+
+          for FILE in $CHANGED_FILES; do
+            if [[ "$FILE" != "$VERSION_FILE" ]]; then
+              echo "Non-version file changed: $FILE"
+              echo "needs_review=true" >> $GITHUB_ENV
+              exit 0
+            fi
+          done
+
+          echo "needs_review=false" >> $GITHUB_ENV
+
+      - name: Auto-approve version bumps
+        if: env.needs_review == 'false'
+        run: gh pr review ${{ github.event.pull_request.number }} --approve
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
